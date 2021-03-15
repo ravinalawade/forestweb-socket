@@ -30,11 +30,11 @@ SECRET_KEY = 'x@#7fk7ggef9fhm3y@u1rdph+-u+(^*8$0@c=i47=e7l^yqr=q'
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_HSTS_SECONDS = 3600
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_HSTS_SECONDS = 3600
+# SECURE_SSL_REDIRECT = False
+# SESSION_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = False
 
 # Application definition
 
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'server.wsgi.application'
+# WSGI_APPLICATION = 'server.wsgi.application'
 
 
 # Database
@@ -106,7 +106,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
     },
 }
