@@ -15,7 +15,7 @@ class Test_api(APIView):
         print("request accepted")
         return Response({"data":"Ravi"})
 
-class websocket(WebsocketConsumer):
+class Websocket(WebsocketConsumer):
     # def connect(self):
     #     self.accept()
 
