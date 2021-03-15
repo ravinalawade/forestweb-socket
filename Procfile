@@ -1,1 +1,1 @@
-web: daphne server.asgi:application
+web: daphne -p 4000 server.asgi:application
