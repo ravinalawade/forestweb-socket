@@ -38,6 +38,8 @@ import os
 from django.conf.urls import url
 from django.core.asgi import get_asgi_application
 
+from ..main import routing
+
 # Fetch Django ASGI application early to ensure AppRegistry is populated
 # before importing consumers and AuthMiddlewareStack that may import ORM
 # models.
@@ -54,7 +56,7 @@ application = ProtocolTypeRouter({
     # WebSocket chat handler
     "websocket": AuthMiddlewareStack(
         URLRouter(
-            main.routing.websocket_urlpatterns
+            websocket_urlpatterns
         )
     ),
 })
