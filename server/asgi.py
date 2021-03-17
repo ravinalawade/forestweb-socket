@@ -62,7 +62,7 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 # })
 
 import os
-import channels.asgi
+import channels
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "server.settings")
-channel_layer = channels.asgi.get_channel_layer()
+channel_layer = channels.layers.get_channel_layer()
