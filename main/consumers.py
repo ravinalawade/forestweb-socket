@@ -42,25 +42,25 @@ class Websocket(WebsocketConsumer):
     # Receive message from WebSocket
     def receive(self, text_data):
         print("recieving",text_data)
-        text_data_json = json.loads(text_data)
-        message = text_data_json
+        # text_data_json = json.loads(text_data)
+        # message = text_data_json
 
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(
             "pratik",
             {
                 'type': 'chat_message',
-                'message': message
+                'message': text_data + " from ravi"
             }
         )
 
     # # Receive message from room group
     def chat_message(self, event):
         print("chat message",event)
-        message=event['message']
+        # message=event['message']
         # Send message to WebSocket
-        message["message"]+=" from Ravi"
-        self.send(text_data=json.dumps(message))
+        # message["message"]+=" from Ravi"
+        self.send(text_data=event['message'])
     
     def send_message(self,event):
         print("Sending from server",event)
